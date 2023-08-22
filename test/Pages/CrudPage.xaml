@@ -1,0 +1,86 @@
+﻿<Page x:Class="test.CrudPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:materialDesignConverters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf" 
+      xmlns:local="clr-namespace:test"
+      mc:Ignorable="d"
+      d:DesignHeight="700" d:DesignWidth="1000.8"
+      Title="Page3">
+
+    <Grid>
+        <Frame Name="mainFrame" NavigationUIVisibility="Hidden" Margin="111,1,0.4,-1.4" Grid.RowSpan="2"/>
+        <Viewbox Stretch="Fill" StretchDirection="Both">
+
+            <DockPanel Width="1000.8" Height="700">
+                <StackPanel DockPanel.Dock="Top" Height="68" Background="Transparent" VerticalAlignment="Top" Margin="-11,0,9.8,0">
+                    <Label Content="Manage Employee Record" Foreground="#FFD6D6D6" FontWeight="Bold" FontSize="20" Margin="327,10,348.6,0"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                    <Label Content="Name" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox Name="name_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="16" Margin="55,0,0,-0.2" Foreground="#FFD6D6D6" KeyDown="name_txt_KeyDown" Height="32.8" BorderBrush="#FFDDDDDD"/>
+                    <Label Content="Age" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox Name="age_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="16" Margin="70,0,0,-0.2" Foreground="#FFD6D6D6" KeyDown="age_txt_KeyDown" Height="32.8" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                    <Label Content="Gender" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <ComboBox x:Name="gender_txt" Width="276" Margin="45,-1,0,0.8" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD">
+                        <ComboBoxItem Content="Male" Foreground="Black"/>
+                        <ComboBoxItem Content="Female" Foreground="Black"/>
+                    </ComboBox>
+                    <Label Content="City" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox BorderThickness="0,0,0,1" Background="Transparent" Name="city_txt" TextWrapping="Wrap" Width="276" FontSize="16" Margin="70,0,0,-0.2" Foreground="#FFDDDDDD" KeyDown="city_txt_KeyDown" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                    <Label Content="Contact No." FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox Name="contact_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="16" Margin="10,0,0,-1.2" Foreground="#FFD6D6D6" KeyDown="contact_txt_KeyDown" BorderBrush="#FFDDDDDD"/>
+                    <Label Content="Department" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <ComboBox x:Name="department_txt" Width="276" Margin="9,0,0,0.8" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD">
+                        <ComboBoxItem Content="HR" Foreground="Black"/>
+                        <ComboBoxItem Content="Accounting" Foreground="Black"/>
+                        <ComboBoxItem Content="IT" Foreground="Black"/>
+                        <ComboBoxItem Content="Engineer" Foreground="Black"/>
+                        <ComboBoxItem Content="Marketing" Foreground="Black"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                    <Label Content="Email" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="email_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" Margin="58,0,0,1.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
+                    <Label Content="Address" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="address_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" Margin="38,-1,0,3.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
+
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,30,101.8,0">
+                    <Label Content="ID" FontSize="16" FontWeight="Bold" Margin="260,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox BorderThickness="0,0,0,1" Background="Transparent" Name="search_txt" TextWrapping="Wrap" Width="179" FontSize="16" Margin="10,0,0,-0.2" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                    <Button x:Name="searchBtn" Content="Search" Width="96" Margin="35,0,0,-0.2" FontSize="14" Click="searchBtn_Click" Background="#FF225F19" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="-15,50,135.8,0">
+                    <Button Name="insertBtn" Content="Insert" Width="96" Margin="100,0,0,0.8" FontSize="14" Click="insertBtn_Click" Background="#FF219F27" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
+                    <Button Name="updateBtn" Content="Update" Width="96" Margin="50,0,0,0.8" FontSize="14" Click="updateBtn_Click" Background="#FF5657D6" Foreground="#FFDDDDDD" BorderBrush="#FF3B2D97"/>
+                    <Button Name="deleteBtn" Content="Delete" Width="96" Margin="50,0,0,-0.2" FontSize="14" Click="deleteBtn_Click" Background="#FFB71C1C" Foreground="#FFDDDDDD" BorderBrush="#FF930B0B" Height="33" VerticalAlignment="Bottom"/>
+                    <Button Name="clearBtn" Content="Clear Data" Width="100" Margin="50,0,0,0.8" IsCancel="True" FontSize="14" Click="clearBtn_Click" Background="#FF9D1C1C" Foreground="#FFDDDDDD" BorderBrush="#FF6E0A0A"/>
+                    <Button Name="printBtn" Width="82" Margin="150,0,0,0.8" IsCancel="True" FontSize="14" Background="#FF525357" Foreground="#FFF1F1F1" BorderBrush="#FF525357" Click="printBtn_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon x:Name="homeIcon" Kind="Printer" Foreground="#FFDDDDDD" Width="50" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="256" VerticalAlignment="Top" Width="880" Margin="34,12,86.8,0">
+                    <DataGrid x:Name="datagrid" IsReadOnly="true" Width="851" Margin="0,2,0,27" Foreground="#DD000000" Background="#FFD0D0D0" BorderBrush="#1F000000" Height="227" SelectionChanged="datagrid_SelectionChanged" />
+                </StackPanel>
+            </DockPanel>
+        </Viewbox>
+
+    </Grid>
+</Page>

@@ -1,0 +1,29 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:test.Pages"
+      xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="test.Pages.viewLeaveStatus"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1280"
+      Title="viewLeaveStatus">
+
+    <Grid Width="1000.8" Height="700">
+        <Grid Margin="0,0,-0.2,-42">
+            <DataGrid x:Name="leaveStatusDataGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="458" Margin="-37,112,0,0" VerticalAlignment="Top" Width="1011" BorderBrush="#1F000000" Background="#FFD0D0D0"/>
+            <DatePicker x:Name="searchFromDate" Foreground="#FF484848" BorderBrush="#89FFFFFF" Margin="161,616,622,97" Height="29"/>
+            <DatePicker x:Name="searchToDate" Foreground="#FF484848" BorderBrush="#89FFFFFF" Margin="573,617,209,96" Height="29"/>
+        </Grid>
+
+        <Label Content="Leave Application Status" HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Width="288" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="searchLeaveStatus" Foreground="#FFD6D6D6" Background="Transparent" BorderThickness="0,0,0,2" HorizontalAlignment="Left" Height="27" Margin="634,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" FontSize="16" BorderBrush="#FFDDDDDD"/>
+        <Label Content="Leave ID :" HorizontalAlignment="Left" Margin="539,68,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Width="93" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="searchLeaveStatusBtn" Content="Search" HorizontalAlignment="Left" Margin="874,68,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="searchLeaveStatusBtn_Click" Background="#FF225F19" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
+        <Label Content="From :" HorizontalAlignment="Left" Margin="96,616,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Width="66" FontSize="16" FontWeight="Bold"/>
+        <Label Content="To :" HorizontalAlignment="Left" Margin="523,618,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Width="45" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Search By Date" HorizontalAlignment="Left" Margin="395,580,0,0" VerticalAlignment="Top" Foreground="#FFD6D6D6" Width="155" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="searchByDateBtn" Content="Search" HorizontalAlignment="Left" Margin="410,650,0,0" VerticalAlignment="Top" Width="96" Height="32" Background="#FF225F19" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24" Click="searchByDateBtn_Click"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,58 @@
+﻿<Page x:Class="test.Pages.Register"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:test.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1000.8"
+      Title="Register">
+
+    <Grid>
+        <Viewbox Margin="-12,0,11.8,0">
+            <DockPanel Width="1000.8" Height="700" >
+                <StackPanel DockPanel.Dock="Top" Height="68" VerticalAlignment="Top" Background="Transparent" Margin="0,0,0.8,0">
+                    <Label Content="Register New Account" Foreground="#FFDDDDDD" FontWeight="Bold" FontSize="20" Margin="363,10,37,0" />
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,20,88.8,0">
+                    <Label Content="Employee ID" FontSize="16" FontWeight="Bold" Margin="200,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="addEmpID" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="15" Margin="32,10,0,7.8" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,10,88.8,0">
+                    <Label Content="Username" FontSize="16" FontWeight="Bold" Margin="200,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="addAccUsername_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="15" Margin="50,10,0,7.8" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,10.2,88.8,0">
+                    <Label Content="Password" FontSize="16" FontWeight="Bold" Margin="200,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
+                    <PasswordBox x:Name="addAccPassword_txt" BorderThickness="0,0,0,1" Background="Transparent" Margin="54,0,0,-0.2" Width="276" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,10.2,88.8,0">
+                    <Label Content="Type" FontSize="16" FontWeight="Bold" Margin="200,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
+                    <ComboBox x:Name="addAccType_txt" Width="276" Height="26.4" Margin="88,0,0,0" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" FontSize="16">
+                        <ComboBoxItem Content="Admin" Foreground="Black"/>
+                        <ComboBoxItem Content="User" Foreground="Black"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,20,88.8,0">
+                    <Label Content="ID" FontSize="16" FontWeight="Bold" Margin="300,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="addAccSearch_txt" IsEnabled="False" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="168" FontSize="15" Margin="20,10,0,7.8" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="43" VerticalAlignment="Top" Width="878" Margin="34,40,88.8,0">
+                    <Button x:Name="addAccBtn" Content="Add" Width="102" Margin="120,0,0,0.2" FontSize="14" Height="32.8" Click="addAccBtn_Click" Background="#FF219F27" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
+                    <Button x:Name="editAccBtn" Content="Edit" Width="102" Margin="80,0,0,0" FontSize="14" Height="32.8" Click="editAccBtn_Click" Background="#FF5657D6" Foreground="#FFDDDDDD" BorderBrush="#FF3B2D97"/>
+                    <Button x:Name="delAccBtn" Content="Delete" Width="102" Margin="80,0,0,0" FontSize="14" Height="32.8" Click="delAccBtn_Click" Background="#FFB71C1C" Foreground="#FFDDDDDD" BorderBrush="#FF930B0B"/>
+                    <Button x:Name="clearInputAccBtn" Content="Clear Input" Width="102" Margin="80,5,0,5.2" FontSize="14" Height="32.8" Click="clearInputAccBtn_Click" Background="#FF9D1C1C" Foreground="#FFDDDDDD" BorderBrush="#FF6E0A0A"/>
+                </StackPanel>
+                <StackPanel Height="268" VerticalAlignment="Top" Width="802" Margin="0,34.8,0,-2">
+                    <DataGrid Name="accountsDataGrid" IsReadOnly="True" Height="207" Margin="125,0,178.6,0" BorderBrush="#1F000000" Background="#FFD0D0D0" SelectionChanged="accountsDataGrid_SelectionChanged"/>
+                </StackPanel>
+            </DockPanel>
+        </Viewbox>
+    </Grid>
+</Page>
