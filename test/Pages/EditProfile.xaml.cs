@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -46,7 +45,7 @@ namespace test.Pages
                     editContact_txt.Text = da.GetValue(5).ToString();
                     editDepartment_txt.Text = da.GetValue(6).ToString();
                     editEmail_txt.Text = da.GetValue(7).ToString();
-                    editAddress_txt.Text = da.GetValue(9).ToString();
+                    editAddress_txt.Text = da.GetValue(8).ToString();
                 }
             }
             catch (SqlException ex)
@@ -59,18 +58,9 @@ namespace test.Pages
             }
         }
 
-        static string Encrypt(string value)
-        {
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
-                return Convert.ToBase64String(data);
-            }
-        }
-
 
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-2J6G9H0A\SQLEXPRESS;Initial Catalog=InternDB;Integrated Security=True");
+
 
 
         public bool isEditValid()
@@ -121,16 +111,14 @@ namespace test.Pages
 
         private void saveEditProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            string md5PasswordEncrypted = Encrypt(editPassword_txt.Password);
             try
             {
                 if (isEditValid())
                 {
-                    SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + editName_txt.Text + "', Age = '" + editAge_txt.Text + "', Gender = '" + editGender_txt.Text + "', City = '" + editCity_txt.Text + "', ContactNumber = '" + editContact_txt.Text + "', Department = '" + editDepartment_txt.Text + "', Email = '" + editEmail_txt.Text + "', Address = '" + editAddress_txt.Text + "', Password = '" + md5PasswordEncrypted + "' WHERE empID = '" +empID_txt.Text + "' ", con);
+                    SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + editName_txt.Text + "', Age = '" + editAge_txt.Text + "', Gender = '" + editGender_txt.Text + "', City = '" + editCity_txt.Text + "', ContactNumber = '" + editContact_txt.Text + "', Department = '" + editDepartment_txt.Text + "', Email = '" + editEmail_txt.Text + "', Address = '" + editAddress_txt.Text + "' WHERE empID = '" +empID_txt.Text + "' ", con);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Profile has been updated successfully!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
-                    editPassword_txt.Clear();
                 }
             }
             catch (SqlException ex)

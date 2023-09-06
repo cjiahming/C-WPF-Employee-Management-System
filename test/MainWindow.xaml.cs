@@ -41,6 +41,9 @@ namespace test
             openMenu = (Storyboard)button.FindResource("OpenMenu");
             closeMenu = (Storyboard)button.FindResource("CloseMenu");
 
+            ProgressBar pb = new ProgressBar();
+            mainFrame.Content = new Pages.ProgressBar();
+
             if(MyConnection.progressValue == 100)
             {
                 mainFrame.Content = null;
@@ -254,17 +257,17 @@ namespace test
             SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-2J6G9H0A\SQLEXPRESS;Initial Catalog=InternDB;Integrated Security=True");
             try
             {
-                SqlCommand cmd = new SqlCommand("select * from crudTable where Name=@Name AND Password=@Password", con);
+                SqlCommand cmd = new SqlCommand("select * from loginTable where Username=@Username AND Password=@Password", con);
                 cmd.CommandType = CommandType.Text;
                 con.Open();
-                cmd.Parameters.AddWithValue("@Name", usernameTxt.Text);
+                cmd.Parameters.AddWithValue("@Username", usernameTxt.Text);
                 cmd.Parameters.AddWithValue("@Password", md5Password);
                 SqlDataReader rd = cmd.ExecuteReader();
 
                 if (rd.HasRows)
                 {
                     rd.Read();
-                    if (rd[10].ToString() == "Admin")
+                    if (rd[4].ToString() == "Admin")
                     {
                         Pages.adminManageLeave aml = new Pages.adminManageLeave();
                         MyConnection.type = "A";
@@ -277,7 +280,7 @@ namespace test
                         MyConnection.welcomeMsg = usernameTxt.Text;
                         MyConnection.rollMsg = "Admin";
                     }
-                    else if (rd[10].ToString() == "User")
+                    else if (rd[4].ToString() == "User")
                     {
                         MyConnection.type = "U";
                         homeBtn.Visibility = Visibility.Visible;
@@ -364,7 +367,7 @@ namespace test
 
             if (usernameTxt.Text != "")
             {
-                SqlCommand cmd = new SqlCommand("SELECT empID from crudTable WHERE Name = '"+usernameTxt.Text+"' ", con);
+                SqlCommand cmd = new SqlCommand("SELECT empID from loginTable WHERE Username = '"+usernameTxt.Text+"' ", con);
                 SqlDataReader da = cmd.ExecuteReader();
                 while (da.Read())
                 {

@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,15 +31,7 @@ namespace test
             LoadGrid();
         }
 
-        static string Encrypt(string value)
-        {
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
-                return Convert.ToBase64String(data);
-            }
-        }
+        
 
         public void clearData()
         {
@@ -127,6 +118,9 @@ namespace test
         }
 
 
+        
+
+
         private void insertBtn_Click(object sender, RoutedEventArgs e)
         {
             int countRow = (datagrid.Items.Count) + 1;
@@ -134,7 +128,6 @@ namespace test
             string emp = "EMP";
             string num2 = countRow.ToString("000");
             string emp2 = emp + num2;
-            string md5PasswordEncrypted = Encrypt(password_txt.Password);
 
             try
             {
@@ -146,7 +139,7 @@ namespace test
                 {
                     if (isValid())
                     {
-                        SqlCommand cmd = new SqlCommand("INSERT INTO crudTable VALUES(@empID, @Name, @Age, @Gender, @City, @ContactNumber, @Department, @Email, @Password, @Address, @Role)", con);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO crudTable VALUES(@empID, @Name, @Age, @Gender, @City, @ContactNumber, @Department, @Email, @Address)", con);
 
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Parameters.AddWithValue("@empID", emp2);
@@ -157,9 +150,7 @@ namespace test
                         cmd.Parameters.AddWithValue("@ContactNumber", contact_txt.Text);
                         cmd.Parameters.AddWithValue("@Department", department_txt.Text);
                         cmd.Parameters.AddWithValue("@Email", email_txt.Text);
-                        cmd.Parameters.AddWithValue("@Password", md5PasswordEncrypted);
                         cmd.Parameters.AddWithValue("@Address", address_txt.Text);
-                        cmd.Parameters.AddWithValue("@Role", role_txt.Text);
 
                         con.Open();
                         cmd.ExecuteNonQuery();
@@ -202,7 +193,6 @@ namespace test
             search_txt.Text = search_txt.Text.ToUpper();
             SqlCommand cmdCheckExistEmpID = new SqlCommand("SELECT empID from crudTable WHERE empID = '" + search_txt.Text + "' ", con);
 
-            string md5PasswordEncrypted = Encrypt(password_txt.Password);
             string existEmpID = (string)cmdCheckExistEmpID.ExecuteScalar();
 
             if(existEmpID == search_txt.Text)
@@ -211,7 +201,7 @@ namespace test
                 {
                     try
                     {
-                        SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + gender_txt.Text + "', City = '" + city_txt.Text + "', ContactNumber = '" + contact_txt.Text + "', Department = '" + department_txt.Text + "', Email = '" + email_txt.Text + "', Address = '" + address_txt.Text + "', Password = '" + md5PasswordEncrypted + "', Role = '" + role_txt.Text + "' WHERE empID = '" + search_txt.Text + "' ", con);
+                        SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + gender_txt.Text + "', City = '" + city_txt.Text + "', ContactNumber = '" + contact_txt.Text + "', Department = '" + department_txt.Text + "', Email = '" + email_txt.Text + "', Address = '" + address_txt.Text + "' WHERE empID = '" + search_txt.Text + "' ", con);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Record has been updated successfully", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
@@ -534,9 +524,7 @@ namespace test
                 contact_txt.Text = row_selected["ContactNumber"].ToString();
                 department_txt.Text = row_selected["Department"].ToString();
                 email_txt.Text = row_selected["Email"].ToString();
-                password_txt.Password = row_selected["Password"].ToString();
                 address_txt.Text = row_selected["Address"].ToString();
-                role_txt.Text = row_selected["Role"].ToString();
             }
 
         }
