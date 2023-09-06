@@ -27,7 +27,7 @@
 
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,10.2,88.8,0">
                     <Label Content="Password" FontSize="16" FontWeight="Bold" Margin="200,0,0,0" Height="32.8" Foreground="#FFDDDDDD"/>
-                    <PasswordBox x:Name="addAccPassword_txt" BorderThickness="0,0,0,1" Background="Transparent" Margin="54,0,0,-0.2" Width="276" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD"/>
+                    <PasswordBox x:Name="addAccPassword_txt" BorderThickness="0,0,0,1" Background="Transparent" Margin="54,9,0,0" Width="276" Height="26.4" Foreground="#FFD6D6D6" BorderBrush="#FFDDDDDD" VerticalAlignment="Top"/>
                 </StackPanel>
 
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="45" VerticalAlignment="Top" Width="878" Margin="34,10.2,88.8,0">

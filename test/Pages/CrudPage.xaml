@@ -16,11 +16,11 @@
         <Viewbox Stretch="Fill" StretchDirection="Both">
 
             <DockPanel Width="1000.8" Height="700">
-                <StackPanel DockPanel.Dock="Top" Height="68" Background="Transparent" VerticalAlignment="Top" Margin="-11,0,9.8,0">
+                <StackPanel DockPanel.Dock="Top" Height="50" Background="Transparent" VerticalAlignment="Top" Margin="-11,0,9.8,0">
                     <Label Content="Manage Employee Record" Foreground="#FFD6D6D6" FontWeight="Bold" FontSize="20" Margin="327,10,348.6,0"/>
                 </StackPanel>
 
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,8,101.8,0">
                     <Label Content="Name" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
                     <TextBox Name="name_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" FontSize="16" Margin="55,0,0,-0.2" Foreground="#FFD6D6D6" KeyDown="name_txt_KeyDown" Height="32.8" BorderBrush="#FFDDDDDD"/>
                     <Label Content="Age" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
@@ -53,9 +53,18 @@
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
                     <Label Content="Email" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
                     <TextBox x:Name="email_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" Margin="58,0,0,1.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
-                    <Label Content="Address" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
-                    <TextBox x:Name="address_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" Margin="38,-1,0,3.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
+                    <Label Content="Password" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,-0.2" Foreground="#FFDDDDDD" VerticalAlignment="Bottom"/>
+                    <PasswordBox x:Name="password_txt" BorderThickness="0,0,0,1" Background="Transparent" Width="276" Margin="30,-1,0,3.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
+                </StackPanel>
 
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,20,101.8,0">
+                    <Label Content="Address" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <TextBox x:Name="address_txt" BorderThickness="0,0,0,1" Background="Transparent" TextWrapping="Wrap" Width="276" Margin="38,0,0,1.8" Foreground="#FFD6D6D6" FontSize="16" BorderBrush="#FFDDDDDD"/>
+                    <Label Content="Role" Height="32.8" FontSize="16" FontWeight="Bold" Margin="25,0,0,0" Foreground="#FFDDDDDD"/>
+                    <ComboBox x:Name="role_txt" Width="276" Height="26.4" Margin="68,0,0,0" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" FontSize="16">
+                        <ComboBoxItem Content="Admin" Foreground="Black"/>
+                        <ComboBoxItem Content="User" Foreground="Black"/>
+                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="19,30,101.8,0">
@@ -64,7 +73,7 @@
                     <Button x:Name="searchBtn" Content="Search" Width="96" Margin="35,0,0,-0.2" FontSize="14" Click="searchBtn_Click" Background="#FF225F19" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
                 </StackPanel>
 
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="-15,50,135.8,0">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="33" VerticalAlignment="Top" Width="880" Margin="-15,40,135.8,0">
                     <Button Name="insertBtn" Content="Insert" Width="96" Margin="100,0,0,0.8" FontSize="14" Click="insertBtn_Click" Background="#FF219F27" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24"/>
                     <Button Name="updateBtn" Content="Update" Width="96" Margin="50,0,0,0.8" FontSize="14" Click="updateBtn_Click" Background="#FF5657D6" Foreground="#FFDDDDDD" BorderBrush="#FF3B2D97"/>
                     <Button Name="deleteBtn" Content="Delete" Width="96" Margin="50,0,0,-0.2" FontSize="14" Click="deleteBtn_Click" Background="#FFB71C1C" Foreground="#FFDDDDDD" BorderBrush="#FF930B0B" Height="33" VerticalAlignment="Bottom"/>

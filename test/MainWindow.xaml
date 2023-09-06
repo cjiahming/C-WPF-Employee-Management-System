@@ -76,7 +76,7 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Height="42" Margin="14,30,-13.6,0">
-                                <Button x:Name="loginBtn" Content="Login" Width="96" Height="32.8" Margin="160,4,0,4.6" Click="loginBtn_Click" FontSize="15" Background="#FFC2CCD1"/>
+                                <Button x:Name="loginBtn" Content="Login" Width="96" Height="Auto" Margin="160,4,0,4.6" Click="loginBtn_Click" FontSize="15" Background="#FFC2CCD1"/>
                                 <Button x:Name="cancelLoginBtn" Content="Cancel" Width="96" Height="32.8" Margin="67,4,0,4.6" Click="cancelLoginBtn_Click" FontSize="15" Background="#FFC2CCD1"/>
                             </StackPanel>
                         </StackPanel>

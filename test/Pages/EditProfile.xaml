@@ -14,31 +14,34 @@
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="1"/>
             </Border.Effect>
             <Grid>
-                <Label Content="Name" Margin="68,81,406.4,453.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <TextBox Name="editName_txt" Margin="210,80,113.4,454.2" Height="33" BorderBrush="#89FFFFFF" BorderThickness="0" FontSize="16" Foreground="#FFD6D6D6"/>
-                <Label Content="Age" Margin="68,126,406.4,404.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold" />
-                <Label Content="Contact" Margin="68,278,394.4,251.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <Label Content="City" Margin="68,227,399.4,302.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <Label Content="Gender" Margin="68,177,399.4,353.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <ComboBox x:Name="editGender_txt" Width="255" Margin="210,176,113.4,358.2" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" Height="33" BorderThickness="0">
+                <Label Content="Name" Margin="68,66,406.4,468.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <TextBox Name="editName_txt" Margin="210,65,113.4,469.2" Height="33" BorderBrush="#89FFFFFF" BorderThickness="0" FontSize="16" Foreground="#FFD6D6D6"/>
+                <Label Content="Age" Margin="68,111,406.4,419.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold" />
+                <Label Content="Contact" Margin="68,263,394.4,266.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <Label Content="City" Margin="68,212,399.4,317.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <Label Content="Gender" Margin="68,162,399.4,368.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <ComboBox x:Name="editGender_txt" Width="255" Margin="210,161,113.4,373.2" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" Height="33" BorderThickness="0">
                     <ComboBoxItem Content="Male" Foreground="Black"/>
                     <ComboBoxItem Content="Female" Foreground="Black"/>
                 </ComboBox>
-                <Label Content="Department" Margin="68,328,391.4,201.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <ComboBox x:Name="editDepartment_txt" Width="255" Margin="209,327,114.4,207.2" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" Height="33" BorderThickness="0">
+                <Label Content="Department" Margin="68,313,391.4,216.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <ComboBox x:Name="editDepartment_txt" Width="255" Margin="209,312,114.4,222.2" FontSize="16" BorderBrush="#FFDDDDDD" Foreground="#FFDDDDDD" Height="33" BorderThickness="0">
                     <ComboBoxItem Content="HR" Foreground="Black"/>
                     <ComboBoxItem Content="Accounting" Foreground="Black"/>
                     <ComboBoxItem Content="IT" Foreground="Black"/>
                     <ComboBoxItem Content="Engineer" Foreground="Black"/>
                     <ComboBoxItem Content="Marketing" Foreground="Black"/>
                 </ComboBox>
-                <Label Content="Address" Margin="68,428,409.4,104.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <Label Content="Email" Margin="68,378,400.4,152.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
-                <TextBox Name="editAge_txt" Margin="210,125,113.4,409.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
-                <TextBox Name="editCity_txt" Margin="210,226,113.4,308.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
-                <TextBox Name="editContact_txt" Margin="210,278,113.4,256.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
-                <TextBox Name="editAddress_txt" Margin="210,428,113.4,106.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
-                <TextBox Name="editEmail_txt" Margin="210,377,113.4,157.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <Label Content="Password" Margin="68,413,409.4,119.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <Label Content="Address" Margin="68,462,409.4,70.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <Label Content="Email" Margin="68,363,400.4,167.2" Foreground="#FFD6D6D6" FontSize="16" FontWeight="Bold"/>
+                <TextBox Name="editAge_txt" Margin="210,110,113.4,424.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <TextBox Name="editCity_txt" Margin="210,211,113.4,323.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <TextBox Name="editContact_txt" Margin="210,263,113.4,271.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <PasswordBox Name="editPassword_txt" Margin="210,413,113.4,121.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <TextBox Name="editEmail_txt" Margin="210,362,113.4,172.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+                <TextBox Name="editAddress_txt" Margin="210,463,113.4,71.2" Height="33" BorderBrush="#89FFFFFF"  FontSize="16" Foreground="#FFD6D6D6" BorderThickness="0"/>
+
 
                 <Button Content="Save" Name="saveEditProfileBtn" Width="96" Margin="151,517,331.4,18.2" FontSize="14" Background="#FF219F27" Foreground="#FFDDDDDD" BorderBrush="#FF1D6C24" Height="Auto" Click="saveEditProfileBtn_Click"/>
                 <Button Content="Cancel" Name="cancelEditProfileBtn" Width="96" Margin="333,0,149.4,18.2" FontSize="14" Background="#FFB71C1C" Foreground="#FFDDDDDD" BorderBrush="#FF930B0B" Height="33" VerticalAlignment="Bottom"/>

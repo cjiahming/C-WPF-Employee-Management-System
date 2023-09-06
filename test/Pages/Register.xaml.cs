@@ -51,7 +51,6 @@ namespace test.Pages
                 byte[] data = md5.ComputeHash(utf8.GetBytes(value));
                 return Convert.ToBase64String(data);
             }
-
         }
 
 
