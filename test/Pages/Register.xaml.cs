@@ -29,7 +29,7 @@ namespace test.Pages
             LoadAccGrid();
         }
 
-        
+
 
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-2J6G9H0A\SQLEXPRESS;Initial Catalog=InternDB;Integrated Security=True");
 
@@ -51,7 +51,6 @@ namespace test.Pages
                 byte[] data = md5.ComputeHash(utf8.GetBytes(value));
                 return Convert.ToBase64String(data);
             }
-
         }
 
 
@@ -60,7 +59,7 @@ namespace test.Pages
             SqlCommand cmd = new SqlCommand("SELECT * FROM loginTable", con);
             DataTable dt = new DataTable();
 
-            if(con.State == ConnectionState.Closed)
+            if (con.State == ConnectionState.Closed)
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -68,7 +67,8 @@ namespace test.Pages
                 con.Close();
                 con.Close();
                 accountsDataGrid.ItemsSource = dt.DefaultView;
-            }else
+            }
+            else
             {
                 SqlDataReader sdr = cmd.ExecuteReader();
                 dt.Load(sdr);
@@ -90,7 +90,7 @@ namespace test.Pages
                 MessageBox.Show("Do not leave Password field blank!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            
+
             return true;
         }
 
@@ -105,7 +105,7 @@ namespace test.Pages
             string md5Password = Encrypt(addAccPassword_txt.Password);
             try
             {
-                if(addAccSearch_txt.Text != string.Empty)
+                if (addAccSearch_txt.Text != string.Empty)
                 {
                     MessageBox.Show("Please leave the ID field blank.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -209,15 +209,15 @@ namespace test.Pages
 
             string id = (string)cmdCheckExistDelete2.ExecuteScalar();
 
-            if(id == addAccSearch_txt.Text)
+            if (id == addAccSearch_txt.Text)
             {
                 try
                 {
-                    if(MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("empID" + " '" + addAccSearch_txt.Text + "'" + " records has been deleted", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }              
+                    }
                 }
                 catch (SqlException ex)
                 {
@@ -263,7 +263,7 @@ namespace test.Pages
                     LoadAccGrid();
                 }
             }
-            
+
         }
 
         private void clearInputAccBtn_Click(object sender, RoutedEventArgs e)

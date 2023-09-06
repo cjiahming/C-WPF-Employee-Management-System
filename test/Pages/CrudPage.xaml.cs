@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,7 +32,15 @@ namespace test
             LoadGrid();
         }
 
-        
+        static string Encrypt(string value)
+        {
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
+                return Convert.ToBase64String(data);
+            }
+        }
 
         public void clearData()
         {
@@ -51,7 +60,7 @@ namespace test
             SqlCommand cmd = new SqlCommand("SELECT * FROM crudTable", con);
             DataTable dt = new DataTable();
 
-            if(con.State == ConnectionState.Closed)
+            if (con.State == ConnectionState.Closed)
             {
                 con.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -118,9 +127,6 @@ namespace test
         }
 
 
-        
-
-
         private void insertBtn_Click(object sender, RoutedEventArgs e)
         {
             int countRow = (datagrid.Items.Count) + 1;
@@ -128,10 +134,11 @@ namespace test
             string emp = "EMP";
             string num2 = countRow.ToString("000");
             string emp2 = emp + num2;
+            string md5PasswordEncrypted = Encrypt(password_txt.Password);
 
             try
             {
-                if(search_txt.Text != string.Empty)
+                if (search_txt.Text != string.Empty)
                 {
                     MessageBox.Show("Please leave the ID field blank.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -139,7 +146,7 @@ namespace test
                 {
                     if (isValid())
                     {
-                        SqlCommand cmd = new SqlCommand("INSERT INTO crudTable VALUES(@empID, @Name, @Age, @Gender, @City, @ContactNumber, @Department, @Email, @Address)", con);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO crudTable VALUES(@empID, @Name, @Age, @Gender, @City, @ContactNumber, @Department, @Email, @Password, @Address, @Role)", con);
 
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Parameters.AddWithValue("@empID", emp2);
@@ -150,7 +157,9 @@ namespace test
                         cmd.Parameters.AddWithValue("@ContactNumber", contact_txt.Text);
                         cmd.Parameters.AddWithValue("@Department", department_txt.Text);
                         cmd.Parameters.AddWithValue("@Email", email_txt.Text);
+                        cmd.Parameters.AddWithValue("@Password", md5PasswordEncrypted);
                         cmd.Parameters.AddWithValue("@Address", address_txt.Text);
+                        cmd.Parameters.AddWithValue("@Role", role_txt.Text);
 
                         con.Open();
                         cmd.ExecuteNonQuery();
@@ -193,15 +202,16 @@ namespace test
             search_txt.Text = search_txt.Text.ToUpper();
             SqlCommand cmdCheckExistEmpID = new SqlCommand("SELECT empID from crudTable WHERE empID = '" + search_txt.Text + "' ", con);
 
+            string md5PasswordEncrypted = Encrypt(password_txt.Password);
             string existEmpID = (string)cmdCheckExistEmpID.ExecuteScalar();
 
-            if(existEmpID == search_txt.Text)
+            if (existEmpID == search_txt.Text)
             {
                 if (isValid())
                 {
                     try
                     {
-                        SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + gender_txt.Text + "', City = '" + city_txt.Text + "', ContactNumber = '" + contact_txt.Text + "', Department = '" + department_txt.Text + "', Email = '" + email_txt.Text + "', Address = '" + address_txt.Text + "' WHERE empID = '" + search_txt.Text + "' ", con);
+                        SqlCommand cmd = new SqlCommand("UPDATE crudTable SET Name = '" + name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + gender_txt.Text + "', City = '" + city_txt.Text + "', ContactNumber = '" + contact_txt.Text + "', Department = '" + department_txt.Text + "', Email = '" + email_txt.Text + "', Address = '" + address_txt.Text + "', Password = '" + md5PasswordEncrypted + "', Role = '" + role_txt.Text + "' WHERE empID = '" + search_txt.Text + "' ", con);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Record has been updated successfully", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
@@ -263,7 +273,7 @@ namespace test
             SqlCommand cmdCheckExistEmpID = new SqlCommand("SELECT empID from crudTable WHERE empID = '" + search_txt.Text + "' ", con);
             string existEmpID = (string)cmdCheckExistEmpID.ExecuteScalar();
 
-            if(existEmpID == search_txt.Text)
+            if (existEmpID == search_txt.Text)
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM crudTable WHERE empID = '" + search_txt.Text + "' ", con);
                 try
@@ -327,7 +337,7 @@ namespace test
 
             if (pid == search_txt.Text)
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM crudTable WHERE empID = '" + search_txt.Text+ "' ", con);
+                SqlCommand cmd = new SqlCommand("DELETE FROM crudTable WHERE empID = '" + search_txt.Text + "' ", con);
                 try
                 {
                     if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
@@ -384,7 +394,7 @@ namespace test
 
 
         private void name_txt_KeyDown(object sender, KeyEventArgs e)
-        {      
+        {
             // Allow alphanumeric and space.
             if (e.Key >= Key.A && e.Key <= Key.Z || e.Key == Key.Space)
             {
@@ -404,9 +414,9 @@ namespace test
         }
 
         private void age_txt_KeyDown(object sender, KeyEventArgs e)
-        {         
+        {
             // Allow alphanumeric and space.
-            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)              
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
             {
                 e.Handled = false;
             }
@@ -514,7 +524,7 @@ namespace test
         {
             DataGrid gd = (DataGrid)sender;
             DataRowView row_selected = gd.SelectedItem as DataRowView;
-            if(row_selected != null)
+            if (row_selected != null)
             {
                 search_txt.Text = row_selected["empID"].ToString();
                 name_txt.Text = row_selected["Name"].ToString();
@@ -524,7 +534,9 @@ namespace test
                 contact_txt.Text = row_selected["ContactNumber"].ToString();
                 department_txt.Text = row_selected["Department"].ToString();
                 email_txt.Text = row_selected["Email"].ToString();
+                password_txt.Password = row_selected["Password"].ToString();
                 address_txt.Text = row_selected["Address"].ToString();
+                role_txt.Text = row_selected["Role"].ToString();
             }
 
         }
